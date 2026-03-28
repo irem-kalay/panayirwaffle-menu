@@ -2,39 +2,41 @@ import { ImageWithFallback } from './figma/ImageWithFallback';
 import { ArrowRight } from 'lucide-react';
 
 interface CategoryCardProps {
+  index: number;
   title: string;
   description: string;
   imageUrl: string;
   onClick: () => void;
 }
 
-export function CategoryCard({ title, description, imageUrl, onClick }: CategoryCardProps) {
+export function CategoryCard({ index, title, description, imageUrl, onClick }: CategoryCardProps) {
   return (
     <button
       type="button"
       onClick={onClick}
-      className="category-card-root group relative overflow-hidden rounded-xl bg-card border border-border hover:border-primary/50 shadow-sm hover:shadow-md active:scale-[0.98] transition-all duration-300 text-left w-full h-full"
+      className="category-card-root group text-left w-full"
+      data-layout={index % 2 === 0 ? 'default' : 'reverse'}
     >
       <div className="category-card-layout">
-        <div className="relative category-card-image overflow-hidden">
+        <div className="category-card-image-wrap">
           <ImageWithFallback
             src={imageUrl}
             alt={title}
-            className="absolute inset-0 w-full h-full object-cover group-hover:scale-110 transition-transform duration-700"
+            className="category-card-image"
           />
-          <div className="absolute inset-0 bg-gradient-to-r from-transparent to-background/20" />
         </div>
 
         <div className="category-card-body">
           <div className="category-card-text">
+            <p className="category-card-kicker">Lezzet seçkisi</p>
             <h3 className="text-primary">{title}</h3>
             <p className="category-card-desc">{description}</p>
           </div>
 
-          <div className="flex items-center gap-2 text-primary text-sm mt-2">
-            <span className="group-hover:underline">Menüyü Göster</span>
+          <span className="category-card-link">
+            Menüyü Göster
             <ArrowRight className="w-4 h-4 shrink-0 group-hover:translate-x-1 transition-transform" />
-          </div>
+          </span>
         </div>
       </div>
     </button>

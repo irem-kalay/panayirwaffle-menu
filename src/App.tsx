@@ -19,7 +19,11 @@ export default function App() {
       {currentPage === 'home' ? (
         <HomePage onSelectCategory={handleSelectCategory} />
       ) : (
-        <CategoryPage categoryId={currentPage} onBack={handleBackToHome} />
+        <CategoryPage
+          categoryId={currentPage}
+          onBack={handleBackToHome}
+          onSelectCategory={handleSelectCategory}
+        />
       )}
     </>
   );

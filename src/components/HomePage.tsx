@@ -20,10 +20,11 @@ export function HomePage({ onSelectCategory }: HomePageProps) {
           </p>
         </div>
 
-        <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 sm:gap-8 max-w-5xl mx-auto category-card-grid">
-          {menuCategoryList.map((category) => (
+        <div className="max-w-5xl mx-auto category-card-grid">
+          {menuCategoryList.map((category, index) => (
             <CategoryCard
               key={category.id}
+              index={index}
               title={category.title}
               description={category.homeDescription}
               imageUrl={category.heroImage}

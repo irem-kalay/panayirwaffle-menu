@@ -36,6 +36,7 @@ export interface MenuItem {
 
 export interface MenuCategory {
   id: MenuCategoryId;
+  navLabel: string;
   title: string;
   homeDescription: string;
   pageDescription: string;
@@ -47,6 +48,7 @@ export interface MenuCategory {
 export const menuCategoryList: MenuCategory[] = [
   {
     id: 'waffles',
+    navLabel: 'Waffle',
     title: 'Waffle Çeşitleri',
     homeDescription: 'Klasik, Brüksel, Bubble ve özel tariflerle hazırlanan waffle menüsü.',
     pageDescription: 'Klasik, Brüksel, Bubble ve Waffle Spesiyallerimiz bölümlerinden seçim yapın.',
@@ -243,6 +245,7 @@ export const menuCategoryList: MenuCategory[] = [
   },
   {
     id: 'dondurmalar',
+    navLabel: 'Dondurma',
     title: 'Dondurma Çeşitleri',
     homeDescription: 'Klasik ve sevilen tatlarda top dondurma seçenekleri.',
     pageDescription: 'Her biri 50 ₺; top dondurma çeşitleri.',
@@ -302,6 +305,7 @@ export const menuCategoryList: MenuCategory[] = [
   },
   {
     id: 'kahveler',
+    navLabel: 'Kahve',
     title: 'Kahve Çeşitleri',
     homeDescription: 'Espresso bazlı sıcak kahveler ve soğuk kahve seçenekleri.',
     pageDescription: 'Kahve çeşitleri ve soğuk kahveler; milkshake içecekler menüsünde.',
@@ -386,6 +390,7 @@ export const menuCategoryList: MenuCategory[] = [
   },
   {
     id: 'icecekler',
+    navLabel: 'İçecek',
     title: 'İçecek Çeşitleri',
     homeDescription: 'Soğuk içecekler, milkshake, frozen ve sıcak içecekler.',
     pageDescription: 'Soğuk içecekler, milkshake, frozen, sıcak içecekler, fresh ve bitki çayları.',

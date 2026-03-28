@@ -17,33 +17,38 @@ export function MenuItemCard({ name, description, price, imageUrl }: MenuItemCar
     .toUpperCase();
 
   return (
-    <div className="menu-item-card-root bg-card rounded-lg overflow-hidden border border-border hover:border-primary/50 shadow-sm hover:shadow-md transition-all duration-300 h-full">
+    <article className="menu-item-card-root">
       <div className="menu-item-layout">
-        <div className="relative menu-item-image overflow-hidden">
+        <div className="menu-item-image-shell">
           {imageUrl ? (
             <ImageWithFallback
               src={imageUrl}
               alt={name}
-              className="absolute inset-0 w-full h-full object-cover hover:scale-110 transition-transform duration-500"
+              className="menu-item-image"
             />
           ) : (
-            <div className="absolute inset-0 flex items-center justify-center bg-[linear-gradient(145deg,#f1dfca,#edc97d)] text-lg font-semibold text-primary">
+            <div className="menu-item-image menu-item-placeholder">
               {initials}
             </div>
           )}
-          <div className="absolute inset-0 bg-gradient-to-r from-transparent to-background/10" />
         </div>
 
         <div className="menu-item-content">
           <div className="menu-item-heading">
-            <h4 className="text-foreground font-medium">{name}</h4>
-            <span className="text-primary shrink-0 text-sm sm:text-base">{price}</span>
+            <div className="menu-item-copy">
+              <h4 className="text-foreground font-medium">{name}</h4>
+              {description && description.trim() ? (
+                <p className="menu-item-description">{description}</p>
+              ) : (
+                <p className="menu-item-description menu-item-description-muted">
+                  Uyumlu eşlikçilerle hazırlanan özel sunum.
+                </p>
+              )}
+            </div>
+            <span className="menu-item-price">{price}</span>
           </div>
-          {description && description.trim() ? (
-            <p className="menu-item-description">{description}</p>
-          ) : null}
         </div>
       </div>
-    </div>
+    </article>
   );
 }
