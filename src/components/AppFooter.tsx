@@ -27,7 +27,7 @@ export function AppFooter() {
           <ul className="app-footer-list">
             <li className="flex gap-2 text-muted-foreground text-sm">
               <MapPin className="w-4 h-4 shrink-0 opacity-80" aria-hidden />
-              <span>Adres bilgisi için işletmeyle iletişime geçin.</span>
+              <span>Atatürk, Atapark Cd No:2-4, 34758 Ataşehir/İstanbul</span>
             </li>
             <li className="flex gap-2 items-center text-sm text-muted-foreground">
               <Phone className="w-4 h-4 shrink-0 opacity-80" aria-hidden />
@@ -35,7 +35,7 @@ export function AppFooter() {
                 href="tel:+90"
                 className="text-primary hover:underline underline-offset-4 touch-manipulation"
               >
-                Telefon (ekleyin)
+                0533 493 54 13
               </a>
             </li>
           </ul>
