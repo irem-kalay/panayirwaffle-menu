@@ -1,0 +1,81 @@
+:root {
+  --background: #faf3ea;
+  --foreground: #3d2818;
+  --card: rgba(255, 251, 247, 0.92);
+  --card-foreground: #3d2818;
+  --popover: #fffaf5;
+  --popover-foreground: #3d2818;
+  --primary: #7a4725;
+  --primary-foreground: #fffaf4;
+  --secondary: #f1dfca;
+  --secondary-foreground: #4a2c16;
+  --muted: #f6ebde;
+  --muted-foreground: #7e624d;
+  --accent: #edc97d;
+  --accent-foreground: #4d3017;
+  --border: rgba(122, 71, 37, 0.14);
+  --ring: rgba(237, 201, 125, 0.75);
+}
+
+html,
+body,
+#root {
+  min-height: 100%;
+}
+
+body {
+  margin: 0;
+  min-height: 100dvh;
+  font-family: 'Avenir Next', 'Segoe UI', 'Trebuchet MS', sans-serif;
+  background:
+    radial-gradient(circle at top, rgba(237, 201, 125, 0.35), transparent 32%),
+    linear-gradient(180deg, #fffaf4 0%, #f2e4d3 100%);
+}
+
+h1,
+h2,
+h3,
+h4 {
+  font-family: 'Iowan Old Style', 'Palatino Linotype', 'Book Antiqua', Georgia, serif;
+  letter-spacing: 0.01em;
+}
+
+* {
+  -webkit-tap-highlight-color: rgba(122, 71, 37, 0.12);
+}
+
+.app-surface {
+  min-height: 100dvh;
+  padding: 0;
+}
+
+.phone-shell {
+  width: 100%;
+  max-width: 28.75rem;
+  min-height: 100dvh;
+  margin: 0 auto;
+  background: rgba(250, 243, 234, 0.96);
+  backdrop-filter: blur(18px);
+}
+
+.menu-tab-strip {
+  scrollbar-width: none;
+}
+
+.menu-tab-strip::-webkit-scrollbar {
+  display: none;
+}
+
+@media (min-width: 1024px) {
+  .app-surface {
+    padding: 1.5rem 1rem;
+  }
+
+  .phone-shell {
+    min-height: calc(100dvh - 3rem);
+    border: 1px solid rgba(122, 71, 37, 0.12);
+    border-radius: 2rem;
+    box-shadow: 0 24px 80px rgba(83, 52, 28, 0.16);
+    overflow: hidden;
+  }
+}
