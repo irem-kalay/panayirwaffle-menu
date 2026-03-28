@@ -23,6 +23,12 @@ import klasikWaffleImg from '../assets/photos/klasikWaffle.jpg';
 import dubaiWaffleImg from '../assets/photos/dubaiWaffle.jpg';
 import dondurmalıWaffleImg from '../assets/photos/dondurmalıWaffle.jpg';
 import eksiImg from '../assets/photos/eksi.jpg';
+import fuseteaImg from '../assets/photos/fusetea.png';
+import fantaImg from '../assets/photos/fanta.png';
+import suImg from '../assets/photos/su.png';
+import colaImg from '../assets/photos/cola.png';
+import spriteImg from '../assets/photos/sprite.png';
+import cappucinoImg from '../assets/photos/cappucino.png';
 
 export type MenuCategoryId = 'waffles' | 'dondurmalar' | 'kahveler' | 'icecekler';
 
@@ -321,7 +327,7 @@ export const menuCategoryList: MenuCategory[] = [
         price: '170 ₺',
         subcategory: 'Kahve Çeşitleri',
       },
-      { name: 'Cappuccino', description: 'Espresso, buharda ısıtılmış süt ve süt köpüğü.', price: '150 ₺', subcategory: 'Kahve Çeşitleri' },
+      { name: 'Cappuccino', description: 'Espresso, buharda ısıtılmış süt ve süt köpüğü.', price: '150 ₺', imageUrl: cappucinoImg, subcategory: 'Kahve Çeşitleri' },
       {
         name: 'Americano',
         description: 'Espresso üzerine sıcak su.',
@@ -404,16 +410,17 @@ export const menuCategoryList: MenuCategory[] = [
       'Bitki Çayları',
     ],
     items: [
-      { name: 'Coco Cola', description: 'Coca-Cola', price: '120 ₺', subcategory: 'Soğuk İçecekler' },
-      { name: 'Fanta', description: 'Fanta', price: '120 ₺', subcategory: 'Soğuk İçecekler' },
+      { name: 'Coco Cola', description: 'Coca-Cola', price: '120 ₺', imageUrl: colaImg, subcategory: 'Soğuk İçecekler' },
+      { name: 'Fanta', description: 'Fanta', price: '120 ₺', imageUrl: fantaImg, subcategory: 'Soğuk İçecekler' },
       {
         name: 'Fuse Tea',
         description: 'Limon, şeftali, mango.',
         price: '120 ₺',
+        imageUrl: fuseteaImg,
         subcategory: 'Soğuk İçecekler',
       },
-      { name: 'Sprite', description: 'Sprite', price: '100 ₺', subcategory: 'Soğuk İçecekler' },
-      { name: 'Su', description: 'Su', price: '50 ₺', subcategory: 'Soğuk İçecekler' },
+      { name: 'Sprite', description: 'Sprite', price: '100 ₺', imageUrl: spriteImg, subcategory: 'Soğuk İçecekler' },
+      { name: 'Su', description: 'Su', price: '50 ₺', imageUrl: suImg, subcategory: 'Soğuk İçecekler' },
       { name: 'Soda', description: 'Soda', price: '70 ₺', subcategory: 'Soğuk İçecekler' },
       { name: 'Çilekli Milkshake', description: 'Çilekli Milkshake', price: '250 ₺', subcategory: 'Milkshake' },
       { name: 'Çikolatalı Milkshake', description: 'Çikolatalı Milkshake', price: '250 ₺', subcategory: 'Milkshake' },
