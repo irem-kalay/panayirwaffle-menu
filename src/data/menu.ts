@@ -194,8 +194,14 @@ export const menuCategoryList: MenuCategory[] = [
         subcategory: 'Bubble Waffle',
       },
       {
-        name: 'Kova Waffle',
+        name: 'Kova Waffle (İki Kişilik)',
         price: '600 ₺',
+        imageUrl: bubbleWaffleImg,
+        subcategory: 'Bubble Waffle',
+      },
+        {
+        name: 'Kova Waffle (Tek Kişilik)',
+        price: '450 ₺',
         imageUrl: bubbleWaffleImg,
         subcategory: 'Bubble Waffle',
       },
