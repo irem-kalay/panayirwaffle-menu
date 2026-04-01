@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import { HomePage } from './components/HomePage';
 import { CategoryPage } from './components/CategoryPage';
+import { LanguageProvider } from './context/LanguageContext';
 import type { MenuCategoryId } from './data/menu';
 
 export default function App() {
@@ -15,7 +16,7 @@ export default function App() {
   };
 
   return (
-    <>
+    <LanguageProvider>
       {currentPage === 'home' ? (
         <HomePage onSelectCategory={handleSelectCategory} />
       ) : (
@@ -25,6 +26,6 @@ export default function App() {
           onSelectCategory={handleSelectCategory}
         />
       )}
-    </>
+    </LanguageProvider>
   );
 }
