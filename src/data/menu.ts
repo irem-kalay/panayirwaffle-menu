@@ -171,36 +171,42 @@ export const menuCategoryList: MenuCategory[] = [
       /* —— Bubble Waffle —— */
       {
         name: 'Bubble Waffle (Tabak)',
+        description:'Bubble Waffle tabakta servis edilir.',
         price: '490 ₺',
         imageUrl: bubbleWaffleImg,
         subcategory: 'Bubble Waffle',
       },
       {
         name: 'Bubble Cup (Bardak) Waffle',
+        description:'Bubble Waffle bardakta servis edilir.',
         price: '400 ₺',
         imageUrl: bubbleCupWaffleImg,
         subcategory: 'Bubble Waffle',
       },
       {
         name: 'Bubble Dondurmalı Sandviç Waffle',
+        description:'Bubble Waffle dondurmalı sandviç olarak servis edilir.',
         price: '490 ₺',
         imageUrl: bubbleDondurmalıSandvicImg,
         subcategory: 'Bubble Waffle',
       },
       {
         name: 'Bubble Sandviç Waffle',
+        description:'Bubble Waffle sandviç olarak servis edilir.',
         price: '450 ₺',
         imageUrl: bubbleSandvicImg,
         subcategory: 'Bubble Waffle',
       },
       {
         name: 'Kova Waffle (İki Kişilik)',
+        description:'Kova Waffle (İki Kişilik)',
         price: '600 ₺',
         imageUrl: bubbleWaffleImg,
         subcategory: 'Bubble Waffle',
       },
         {
         name: 'Kova Waffle (Tek Kişilik)',
+        description:'Kova Waffle (Tek Kişilik)',
         price: '450 ₺',
         imageUrl: bubbleWaffleImg,
         subcategory: 'Bubble Waffle',
