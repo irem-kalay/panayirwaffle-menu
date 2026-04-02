@@ -79,7 +79,7 @@ export const menuCategoryList: MenuCategory[] = [
         nameEn: 'Create Your Own Waffle',
         description: 'Sınırsız seçim hakkıyla istediğin gibi tasarla.',
         descriptionEn: 'Design it as you like with unlimited choices.',
-        price: '350 ₺',
+        price: '400 ₺',
         imageUrl: wafflesImg,
         subcategory: 'Klasik',
       },
@@ -89,7 +89,7 @@ export const menuCategoryList: MenuCategory[] = [
         description:
           'Waffle hamuru üzerine sütlü çikolata, muz, çilek, kivi, fındık ve beyaz çikolata sos.',
         descriptionEn: 'Waffle batter topped with milk chocolate, banana, strawberry, kiwi, hazelnut, and white chocolate sauce.',
-        price: '350 ₺',
+        price: '400 ₺',
         imageUrl: klasikWaffleImg,
         subcategory: 'Klasik',
       },
@@ -172,7 +172,7 @@ export const menuCategoryList: MenuCategory[] = [
       {
         name: 'Bubble Waffle (Tabak)',
         description:'Bubble Waffle tabakta servis edilir.',
-        price: '490 ₺',
+        price: '500 ₺',
         imageUrl: bubbleWaffleImg,
         subcategory: 'Bubble Waffle',
       },
@@ -265,7 +265,7 @@ export const menuCategoryList: MenuCategory[] = [
         description:
           'Waffle hamuru üzerine Lotus karamalize bisküvi ezmesi, muz, çilek, Lotus bisküvi parçaları üzerine beyaz çikolata; 1 adet Lotus bisküvi.',
         descriptionEn: 'Waffle with Lotus caramelized cookie paste, banana, strawberry, Lotus cookie pieces topped with white chocolate; includes 1 Lotus cookie.',
-        price: '400 ₺',
+        price: '450 ₺',
         imageUrl: lotusImg,
         subcategory: 'Waffle Spesiyallerimiz',
       },
@@ -273,7 +273,7 @@ export const menuCategoryList: MenuCategory[] = [
         name: 'Oreo Waffle',
         description:
           'Sütlü çikolata, muz, parça fındık, sütlü pirinç patlağı, Oreo bisküvi parçaları, beyaz çikolata sos üzerine 1 adet Oreo bisküvi.',
-        price: '400 ₺',
+        price: '450 ₺',
         imageUrl: oreoImg,
         subcategory: 'Waffle Spesiyallerimiz',
       },
