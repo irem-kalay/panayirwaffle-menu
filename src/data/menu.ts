@@ -217,7 +217,7 @@ export const menuCategoryList: MenuCategory[] = [
         nameEn: 'My Caramel',
         description: 'Sütlü çikolata, muz, çilek, fındık, özel karamel sos.',
         descriptionEn: 'Milk chocolate, banana, strawberry, hazelnut, special caramel sauce.',
-        price: '350 ₺',
+        price: '400 ₺',
         imageUrl: karamellimImg,
         subcategory: 'Waffle Spesiyallerimiz',
       },
@@ -226,7 +226,7 @@ export const menuCategoryList: MenuCategory[] = [
         nameEn: 'Pistachio Feast',
         description: 'Sütlü çikolata, muz, çilek, fındık, antep fıstığı sos, beyaz çikolata.',
         descriptionEn: 'Milk chocolate, banana, strawberry, hazelnut, pistachio sauce, white chocolate.',
-        price: '350 ₺',
+        price: '400 ₺',
         imageUrl: fistikImg,
         subcategory: 'Waffle Spesiyallerimiz',
       },
@@ -234,14 +234,14 @@ export const menuCategoryList: MenuCategory[] = [
         name: 'Bitterim',
         description:
           'Bitter çikolata, muz, çilek, bitter damla çikolata, bitter pirinç patlağı, üzerine bitter sos.',
-        price: '350 ₺',
+        price: '400 ₺',
         subcategory: 'Waffle Spesiyallerimiz',
       },
       {
         name: 'Panayır Special Waffle',
         description:
           'Sütlü çikolata, muz, çilek, krep kırığı, fındık, sütlü damla çikolata, beyaz pirinç patlağı, bonibon, tutti frutti üzerine beyaz çikolata sos.',
-        price: '350 ₺',
+        price: '400 ₺',
         imageUrl: panayirImg,
         subcategory: 'Waffle Spesiyallerimiz',
       },
@@ -249,14 +249,14 @@ export const menuCategoryList: MenuCategory[] = [
         name: 'Çilek Tutkusu',
         description:
           'Sütlü çikolata, çilek, frambuaz, pirinç patlağı, frambuaz damla çikolata üzerine çilek sos.',
-        price: '350 ₺',
+        price: '400 ₺',
         imageUrl: cilekTutkusuImg,
         subcategory: 'Waffle Spesiyallerimiz',
       },
       {
         name: 'Beyaz Düş',
         description: 'Beyaz çikolata, muz, beyaz pirinç patlağı, fındık üzerine beyaz çikolata sos.',
-        price: '350 ₺',
+        price: '400 ₺',
         subcategory: 'Waffle Spesiyallerimiz',
       },
       {
@@ -281,7 +281,7 @@ export const menuCategoryList: MenuCategory[] = [
         name: 'Ekşi Severlere Özel',
         description:
           'Tabanda sütlü çikolata, muz, çilek, kivi, tutti frutti, portakal şekeri üzerine sütlü çikolata sos.',
-        price: '350 ₺',
+        price: '400 ₺',
         imageUrl: eksiImg,
         subcategory: 'Waffle Spesiyallerimiz',
       },
