@@ -98,7 +98,7 @@ export const menuCategoryList: MenuCategory[] = [
         nameEn: 'Ice Cream Waffle',
         description: 'Bir top dondurma ile servis edilir.',
         descriptionEn: 'Served with a scoop of ice cream.',
-        price: '425 ₺',
+        price: '475 ₺',
         imageUrl: dondurmalıWaffleImg,
         subcategory: 'Klasik',
       },
