@@ -524,7 +524,7 @@ export const menuCategoryList: MenuCategory[] = [
       { name: 'Salep', nameEn: 'Salep', description: 'Salep', descriptionEn: 'Salep', price: '120 ₺', subcategory: 'Sıcak İçecekler' },
       { name: 'Çay', nameEn: 'Tea', description: 'Çay', descriptionEn: 'Tea', price: '50 ₺', subcategory: 'Sıcak İçecekler' },
       { name: 'Kivi Çayı', nameEn: 'Kiwi Tea', description: 'Kivi Çayı', descriptionEn: 'Kiwi Tea', price: '50 ₺', subcategory: 'Sıcak İçecekler' },
-      { name: 'Ev Yapımı Limonata', nameEn: 'Homemade Lemonade', description: 'Ev Yapımı Limonata', descriptionEn: 'Homemade Lemonade', price: '100 ₺', subcategory: 'Fresh İçecekler' },
+      { name: 'Ev Yapımı Limonata', nameEn: 'Homemade Lemonade', description: 'Ev Yapımı Limonata', descriptionEn: 'Homemade Lemonade', price: '90 ₺', subcategory: 'Fresh İçecekler' },
       { name: 'Çilekli Limonata', nameEn: 'Strawberry Lemonade', description: 'Çilekli Limonata', descriptionEn: 'Strawberry Lemonade', price: '120 ₺', subcategory: 'Fresh İçecekler' },
       { name: 'Berry Hibiskus', nameEn: 'Berry Hibiscus', description: 'Berry Hibiskus', descriptionEn: 'Berry Hibiscus', price: '150 ₺', subcategory: 'Fresh İçecekler' },
       { name: 'Ihlamur Çayı', nameEn: 'Linden Tea', description: 'Ihlamur Çayı', descriptionEn: 'Linden Tea', price: '200 ₺', subcategory: 'Bitki Çayları' },
