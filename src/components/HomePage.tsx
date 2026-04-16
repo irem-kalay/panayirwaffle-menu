@@ -1,5 +1,3 @@
-import { useState } from 'react'; // useState hook'unu ekledik
-import { X } from 'lucide-react'; // Kapatma butonu ikonu için eklendi
 import { CategoryCard } from './CategoryCard';
 import { AppTopNav } from './AppTopNav';
 import { AppFooter } from './AppFooter';
@@ -14,44 +12,9 @@ interface HomePageProps {
 export function HomePage({ onSelectCategory }: HomePageProps) {
   const { language } = useLanguage();
   const t = translations[language];
-  
-  // Popup'ın açık olup olmadığını kontrol eden state (varsayılan olarak açık)
-  const [showBirthdayPopup, setShowBirthdayPopup] = useState(true);
 
   return (
-    <div className="min-h-screen bg-background flex flex-col relative">
-      
-      {/* --- SÜRPRİZ POPUP BAŞLANGICI --- */}
-      {showBirthdayPopup && (
-        <div className="fixed inset-0 z-[100] flex items-center justify-center bg-black/60 backdrop-blur-sm px-4">
-          <div className="bg-card text-card-foreground p-6 sm:p-8 rounded-2xl shadow-xl max-w-md w-full relative text-center">
-            {/* Çarpı İkonu */}
-            <button
-              onClick={() => setShowBirthdayPopup(false)}
-              className="absolute top-3 right-3 p-2 text-muted-foreground hover:text-foreground hover:bg-accent/50 rounded-full transition-colors"
-              aria-label="Kapat"
-            >
-              <X className="w-5 h-5" />
-            </button>
-            
-            <div className="text-5xl mb-4">🎉</div>
-            <h2 className="text-2xl font-bold text-primary mb-3">SÜPRİZ YAPIYORUZ!</h2>
-            <p className="text-muted-foreground mb-6 text-sm sm:text-base">
-              Bugün Şevval Ada Şit Hanım'ın doğum günü, siz de bize katılın ve kutlayın! 🎂
-            </p>
-            
-            {/* Menüye Dön Butonu */}
-            <button
-              onClick={() => setShowBirthdayPopup(false)}
-              className="w-full bg-primary text-primary-foreground py-3 rounded-lg font-medium hover:opacity-90 transition-opacity"
-            >
-              Menüye Dön
-            </button>
-          </div>
-        </div>
-      )}
-      {/* --- SÜRPRİZ POPUP BİTİŞİ --- */}
-
+    <div className="min-h-screen bg-background flex flex-col">
       <AppTopNav />
 
       <main className="max-w-7xl mx-auto px-3 sm:px-6 py-8 sm:py-12 w-full flex-1">
