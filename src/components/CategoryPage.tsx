@@ -1,9 +1,8 @@
-import { useEffect, useState } from 'react';
+import { useEffect, useMemo, useState } from 'react';
 import { MenuItemCard } from './MenuItemCard';
 import { AppTopNav } from './AppTopNav';
 import { AppFooter } from './AppFooter';
 import { ImageWithFallback } from './figma/ImageWithFallback';
-import { Tabs, TabsList, TabsTrigger } from './ui/tabs';
 import { menuCategories, menuCategoryList, type MenuCategoryId } from '../data/menu';
 import { useLanguage } from '../context/LanguageContext';
 import { translations } from '../data/translations';
@@ -19,6 +18,19 @@ export function CategoryPage({ categoryId, onBack, onSelectCategory }: CategoryP
   const { language } = useLanguage();
   const t = translations[language];
   const category = menuCategories[categoryId];
+  const displaySubcategories = language === 'en' && category?.subcategoriesEn ? category.subcategoriesEn : category?.subcategories ?? [];
+  const subcategorySections = useMemo(() => {
+    if (!category) {
+      return [];
+    }
+
+    return category.subcategories.map((subcategory, idx) => ({
+      id: `${category.id}-section-${idx}`,
+      key: subcategory,
+      label: displaySubcategories[idx] ?? subcategory,
+      items: category.items.filter((item) => item.subcategory === subcategory),
+    }));
+  }, [category, displaySubcategories]);
 
   useEffect(() => {
     setActiveSubcategory(category?.subcategories[0] ?? '');
@@ -28,19 +40,55 @@ export function CategoryPage({ categoryId, onBack, onSelectCategory }: CategoryP
     window.scrollTo({ top: 0, behavior: 'auto' });
   }, [categoryId]);
 
+  useEffect(() => {
+    if (subcategorySections.length <= 1) {
+      return;
+    }
+
+    const sectionElements = subcategorySections
+      .map((section) => document.getElementById(section.id))
+      .filter((element): element is HTMLElement => element instanceof HTMLElement);
+
+    if (!sectionElements.length) {
+      return;
+    }
+
+    const observer = new IntersectionObserver(
+      (entries) => {
+        const visibleSection = entries
+          .filter((entry) => entry.isIntersecting)
+          .sort((left, right) => right.intersectionRatio - left.intersectionRatio)[0];
+
+        if (visibleSection) {
+          setActiveSubcategory(visibleSection.target.getAttribute('data-subcategory') ?? '');
+        }
+      },
+      {
+        rootMargin: '-22% 0px -58% 0px',
+        threshold: [0.2, 0.35, 0.5, 0.7],
+      },
+    );
+
+    sectionElements.forEach((element) => observer.observe(element));
+
+    return () => observer.disconnect();
+  }, [subcategorySections]);
+
   if (!category) {
     return <div className="p-6 text-sm text-muted-foreground">{t.common.categoryNotFound}</div>;
   }
 
-  const currentSubcategory = category.subcategories.includes(activeSubcategory)
-    ? activeSubcategory
-    : category.subcategories[0];
-  const filteredItems = category.items.filter((item) => item.subcategory === currentSubcategory);
-
   const displayTitle = language === 'en' && category.titleEn ? category.titleEn : category.title;
   const displayPageDesc = language === 'en' && category.pageDescriptionEn ? category.pageDescriptionEn : category.pageDescription;
-  const displaySubcategories = language === 'en' && category.subcategoriesEn ? category.subcategoriesEn : category.subcategories;
   const displayNavLabel = language === 'en' && category.navLabelEn ? category.navLabelEn : category.navLabel;
+
+  const handleJumpToSection = (sectionId: string, subcategory: string) => {
+    setActiveSubcategory(subcategory);
+    document.getElementById(sectionId)?.scrollIntoView({
+      behavior: 'smooth',
+      block: 'start',
+    });
+  };
 
   return (
     <div className="min-h-screen bg-background flex flex-col">
@@ -65,26 +113,34 @@ export function CategoryPage({ categoryId, onBack, onSelectCategory }: CategoryP
             </nav>
           </div>
         </div>
-        <div className="app-header-tabs border-t border-border">
-          <div className="max-w-7xl mx-auto px-3 sm:px-6">
-            <Tabs value={currentSubcategory} onValueChange={setActiveSubcategory} className="w-full">
-              <TabsList className="tabs-horizontal-scroll menu-subcategory-tabs w-full justify-start h-auto p-0 bg-transparent rounded-none border-0 flex-nowrap">
-                {displaySubcategories.map((subcat, idx) => {
-                  const originalSubcat = category.subcategories[idx];
-                  return (
-                    <TabsTrigger
-                      key={originalSubcat}
-                      value={originalSubcat}
-                      className="menu-subcategory-button flex-shrink-0 touch-manipulation whitespace-nowrap"
+        {subcategorySections.length > 1 ? (
+          <div className="app-header-tabs border-t border-border">
+            <div className="max-w-7xl mx-auto px-3 sm:px-6">
+              <nav
+                className="tabs-horizontal-scroll menu-subcategory-tabs"
+                aria-label={language === 'tr' ? 'Alt bölüm bağlantıları' : 'Subsection links'}
+              >
+                {subcategorySections.map((section, index) => (
+                  <div key={section.key} className="menu-subcategory-link-group">
+                    <button
+                      type="button"
+                      onClick={() => handleJumpToSection(section.id, section.key)}
+                      className={`menu-subcategory-button ${activeSubcategory === section.key ? 'is-active' : ''}`}
+                      aria-current={activeSubcategory === section.key ? 'true' : undefined}
                     >
-                      {subcat}
-                    </TabsTrigger>
-                  );
-                })}
-              </TabsList>
-            </Tabs>
+                      {section.label}
+                    </button>
+                    {index < subcategorySections.length - 1 ? (
+                      <span className="menu-subcategory-separator" aria-hidden="true">
+                        /
+                      </span>
+                    ) : null}
+                  </div>
+                ))}
+              </nav>
+            </div>
           </div>
-        </div>
+        ) : null}
       </header>
 
       <main className="max-w-7xl mx-auto px-3 sm:px-6 py-6 sm:py-12 w-full flex-1">
@@ -103,20 +159,43 @@ export function CategoryPage({ categoryId, onBack, onSelectCategory }: CategoryP
           </div>
         </section>
 
-        <div className="menu-item-grid">
-          {filteredItems.map((item) => {
-            const displayName = language === 'en' && item.nameEn ? item.nameEn : item.name;
-            const displayDesc = language === 'en' && item.descriptionEn ? item.descriptionEn : item.description;
-            return (
-              <MenuItemCard
-                key={`${item.subcategory}-${item.name}`}
-                name={displayName}
-                description={displayDesc}
-                price={item.price}
-                imageUrl={item.imageUrl ?? category.heroImage}
-              />
-            );
-          })}
+        <div className="menu-subcategory-sections">
+          {subcategorySections.map((section) => (
+            <section
+              key={section.key}
+              id={section.id}
+              data-subcategory={section.key}
+              className="menu-subcategory-section"
+            >
+              <div className="menu-subcategory-heading">
+                <div>
+                  <p className="menu-subcategory-kicker">
+                    {displayNavLabel} {language === 'tr' ? 'bölümü' : 'section'}
+                  </p>
+                  <h3 className="menu-subcategory-title">{section.label}</h3>
+                </div>
+                <span className="menu-subcategory-count">
+                  {section.items.length} {language === 'tr' ? 'ürün' : 'items'}
+                </span>
+              </div>
+
+              <div className="menu-item-grid">
+                {section.items.map((item) => {
+                  const displayName = language === 'en' && item.nameEn ? item.nameEn : item.name;
+                  const displayDesc = language === 'en' && item.descriptionEn ? item.descriptionEn : item.description;
+                  return (
+                    <MenuItemCard
+                      key={`${item.subcategory}-${item.name}`}
+                      name={displayName}
+                      description={displayDesc}
+                      price={item.price}
+                      imageUrl={item.imageUrl ?? category.heroImage}
+                    />
+                  );
+                })}
+              </div>
+            </section>
+          ))}
         </div>
       </main>
 
