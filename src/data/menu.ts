@@ -157,7 +157,7 @@ export const menuCategoryList: MenuCategory[] = [
         name: 'Orman Meyveli',
         description:
           'Çıtır Brüksel waffle hamuru üzerine beyaz, sütlü Belçika çikolatası, muz, çilek ve orman meyveleri eşliğinde antep fıstığı parçalarının lezzet şöleni.',
-        price: '450 ₺',
+        price: '500 ₺',
         imageUrl: ormanMeyveliImg,
         subcategory: 'Brüksel Waffle',
       },
