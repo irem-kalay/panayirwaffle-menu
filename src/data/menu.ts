@@ -108,7 +108,7 @@ export const menuCategoryList: MenuCategory[] = [
         description:
           'Çıtır waffle hamuru üzerine Belçika çikolatası arasında Dubai çikolata iç dolgusu üzerine pirinç antep fıstığı ve antep fıstığı sos; yanında muz, çilek.',
         descriptionEn: 'Crispy waffle with Dubai chocolate filling between Belgian chocolate, topped with pistachio and pistachio sauce; served with banana and strawberry.',
-        price: '400 ₺',
+        price: '450 ₺',
         imageUrl: dubaiWaffleImg,
         subcategory: 'Klasik',
       },
