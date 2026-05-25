@@ -4,6 +4,7 @@ import { AppTopNav } from './AppTopNav';
 import { AppFooter } from './AppFooter';
 import { ImageWithFallback } from './figma/ImageWithFallback';
 import { menuCategories, menuCategoryList, type MenuCategoryId } from '../data/menu';
+import fetchCsvToMap from '../utils/fetchCsvToMap';
 import { useLanguage } from '../context/LanguageContext';
 import { translations } from '../data/translations';
 
@@ -15,6 +16,8 @@ interface CategoryPageProps {
 
 export function CategoryPage({ categoryId, onBack, onSelectCategory }: CategoryPageProps) {
   const [activeSubcategory, setActiveSubcategory] = useState('');
+  const [priceMap, setPriceMap] = useState<Record<string, string> | null>(null);
+  const [loadingPrices, setLoadingPrices] = useState(false);
   const { language } = useLanguage();
   const t = translations[language];
   const category = menuCategories[categoryId];
@@ -35,6 +38,29 @@ export function CategoryPage({ categoryId, onBack, onSelectCategory }: CategoryP
   useEffect(() => {
     setActiveSubcategory(category?.subcategories[0] ?? '');
   }, [categoryId, category]);
+
+  useEffect(() => {
+    let mounted = true;
+    const csvUrl = 'https://docs.google.com/spreadsheets/d/e/2PACX-1vTImatFP5wJk_Fl-Nya-wm68lYXUOpSkAs0wglxsyJsF8czES9Kwgr3z4zgw2TgHPj8U4lrybN7vL9K/pub?gid=0&single=true&output=csv';
+    setLoadingPrices(true);
+    fetchCsvToMap(csvUrl)
+      .then((map) => {
+        if (!mounted) return;
+        setPriceMap(map);
+      })
+      .catch((err) => {
+        // keep fallback to static prices on error
+        // eslint-disable-next-line no-console
+        console.error('Failed to load price map:', err);
+      })
+      .finally(() => {
+        if (mounted) setLoadingPrices(false);
+      });
+
+    return () => {
+      mounted = false;
+    };
+  }, [categoryId]);
 
   useEffect(() => {
     window.scrollTo({ top: 0, behavior: 'auto' });
@@ -183,12 +209,16 @@ export function CategoryPage({ categoryId, onBack, onSelectCategory }: CategoryP
                 {section.items.map((item) => {
                   const displayName = language === 'en' && item.nameEn ? item.nameEn : item.name;
                   const displayDesc = language === 'en' && item.descriptionEn ? item.descriptionEn : item.description;
+                  const fallbackPrice = item.price;
+                  const fetchedPrice = priceMap ? priceMap[item.name] : undefined;
+                  const currentPrice = loadingPrices ? (language === 'tr' ? 'Yükleniyor...' : 'Loading...') : (fetchedPrice ?? fallbackPrice);
+
                   return (
                     <MenuItemCard
                       key={`${item.subcategory}-${item.name}`}
                       name={displayName}
                       description={displayDesc}
-                      price={item.price}
+                      price={currentPrice}
                       imageUrl={item.imageUrl ?? category.heroImage}
                     />
                   );
